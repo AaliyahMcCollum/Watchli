@@ -15,23 +15,25 @@
     <!-- NAVBAR -->
     <nav>
         <ul>
-            <li><a href="#Home">Home</a></li>
-            <li><a href="#Reviews">Reviews</a></li>
-            <li><a href="#Watchlist">Up Next</a></li>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="./html/reviewLibrary.html">Reviews</a></li>
+            <li><a href="./html/watchList.html">Up Next</a></li>
         </ul>
     </nav>
-    <h1><a href="#Home">WatchLi</a></h1>
+    <h1><a href="/index.html">WatchLi</a></h1>
     <div class="searchContainer">
         <form action="/search" method="get">
             <input class="search" type="search" id="search-input" name="q" placeholder="Search for a movie...">
             <!-- Replace "Search" with magnifying glass -->
-            <span class="searchButton"><img src="images/searchButtonDark.png"></span> 
+            <button class="searchButton"><img class="searchButton" src="images/searchButtonDark.png" width="25px" height="25px"></button> 
         </form>
     </div>
-    
+
     <h2>New Movies</h2>
     <!-- Movie API Call -->
+    <div>Movie PlaceHolder</div>
     <h2>Trending Movies</h2>
+    <div>Movie PlaceHolder</div>
     <!-- Movie API Call -->
 </body>
 </html>
