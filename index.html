@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mainPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
@@ -20,11 +21,14 @@
         </ul>
     </nav>
     <h1><a href="#Home">WatchLi</a></h1>
-    <form action="/search" method="get">
-        <input type="search" id="search-input" name="q" placeholder="Search for a movie...">
-        <!-- Replace "Search" with magnifying glass -->
-        <button type="submit">Search</button> 
-    </form>
+    <div class="searchContainer">
+        <form action="/search" method="get">
+            <input class="search" type="search" id="search-input" name="q" placeholder="Search for a movie...">
+            <!-- Replace "Search" with magnifying glass -->
+            <span class="searchButton"><img src="images/searchButtonDark.png"></span> 
+        </form>
+    </div>
+    
     <h2>New Movies</h2>
     <!-- Movie API Call -->
     <h2>Trending Movies</h2>
