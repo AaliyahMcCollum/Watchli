@@ -1,3 +1,4 @@
+
 *{
     background-color: black;
     color:white;
@@ -20,6 +21,7 @@ h1 {
 
 /* NavBar */
 nav{
+
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px) saturate(180%);
     
@@ -34,6 +36,7 @@ nav ul{
     justify-content: flex-end;
     align-items: center;
     list-style: none;
+
     padding-left: 0px;
     margin-left: 0px;
     position: relative;
@@ -41,13 +44,11 @@ nav ul{
     
 }
 
-
 nav a{
     padding: 10px;
     border-radius: 20px;
     margin-right: 20px ;
     text-align: center;
-    
     vertical-align: middle;
     text-decoration: none;
     color: white;
@@ -61,3 +62,4 @@ nav a:hover {
     background-color: #00BFFF;
     color: white;
 }
+
