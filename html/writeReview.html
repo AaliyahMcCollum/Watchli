@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/css/writeReview.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <title>WriteReview</title>
   </head>
@@ -22,7 +23,9 @@
       </ul>
     </nav>
     <h1><a href="#Home">WatchLi</a></h1>
-    <main class="review_section">
+    <!-- write review site -->
+    <main class="review_container">
+      <!-- left section of the site -->
       <div class="left_section">
         <img
           src="/images/us_poster.jpg"
@@ -31,7 +34,23 @@
         />
         <h2 class="movie_title">US</h2>
       </div>
-      <div class="right_section"></div>
+      <!-- right section of the site -->
+      <div class="right_section">
+        <div class="review_section">
+          <div class="stars">★★★★★</div>
+          <input
+            type="text"
+            class="review_title"
+            placeholder="Enter your review title..."
+          />
+          <textarea
+            class="review_text"
+            rows="17"
+            placeholder="Write your review here..."
+          ></textarea>
+          <button class="btn submit_btn">Submit Review</button>
+        </div>
+      </div>
     </main>
   </body>
 </html>
