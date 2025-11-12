@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Watchli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <title>WatchLi</title>
 </head>
 <body>
     <!-- NAVBAR -->
     <nav>
         <ul>
-            <li>Home</li>
-            <li>Reviews</li>
-            <li>Up Next</li>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Reviews">Reviews</a></li>
+            <li><a href="#UpNext">Up Next</a></li>
         </ul>
     </nav>
-    <h1>WatchLi</h1>
+    <h1 class="limelight-regular"><a href="#Home">WatchLi</a></h1>
     <form action="/search" method="get">
         <input type="search" id="search-input" name="q" placeholder="Search for a movie...">
         <!-- Replace "Search" with magnifying glass -->
