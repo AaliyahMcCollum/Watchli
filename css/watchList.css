@@ -1,0 +1,14 @@
+h2 {
+    border-style: solid;
+    border-color: #00BFFF ;
+    border-width: .1rem;
+    border-radius: 15px;
+    text-align: center;
+    width: 60%;
+    font-size: 50px;
+    font-family: inter;
+    text-shadow: 0 0 10px #00BFFF;
+    margin: auto;
+    height: 60px;
+    
+}
