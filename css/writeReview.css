@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-/* Layout container */
+/* layout container */
 .review_container {
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,7 @@
   padding: 50px 80px;
 }
 
-/* Left side */
+/* left side */
 .left_section {
   flex: 1;
   display: flex;
@@ -23,8 +23,9 @@
 
 .movie_poster {
   width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 100px rgb(36, 195, 216);
+  border-color: #00bfff;
 }
 
 .movie_title {
@@ -32,13 +33,16 @@
   font-size: 2rem;
   width: 300px;
   text-align: center;
+  margin-top: 2vh;
+  background: transparent;
 }
 
-/* Right side */
+/* right side */
 .right_section {
   flex: 2;
   display: flex;
   flex-direction: column;
+  margin-top: -15px;
 }
 
 .review_section {
@@ -49,14 +53,15 @@
   max-width: 600px;
 }
 
-/* Stars */
+/* stars for rating */
 .stars {
-  font-size: 1.8rem;
+  font-size: 3rem;
   color: gold;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-/* Review title input */
+/* review title input */
 .review_title {
   padding: 10px;
   border: none;
@@ -64,11 +69,11 @@
   margin-bottom: 15px;
   width: 100%;
   font-size: 1rem;
-  background-color: #1a1a1a;
+  background-color: #a4cdee4a;
   color: white;
 }
 
-/* Review text area */
+/* review text area input */
 .review_text {
   padding: 12px;
   border: none;
@@ -76,29 +81,38 @@
   resize: none;
   width: 100%;
   font-size: 1rem;
-  background-color: #1a1a1a;
+  background-color: #a4cdee4a;
   color: white;
 }
 
-/* Submit button */
+/* submit button */
 .submit_btn {
   align-self: flex-end;
   margin-top: 20px;
-  background-color: #00bfff;
   color: white;
-  border: none;
   padding: 12px 24px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
   transition: 0.3s ease;
+  background: linear-gradient(0deg, rgba(55, 123, 219, 0.687), rgb(0, 0, 0));
+  border: 1px solid #00bfff;
 }
 
 .submit_btn:hover {
   background-color: #008fcc;
+  transform: translate(-2px);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
 }
 
-/* Responsive */
+.submit_btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 0 8px rgba(0, 191, 255, 0.5),
+    0 0 5px rgba(0, 191, 255, 0.3);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 191, 255, 0.3));
+}
+
+/* responsive */ /*
 @media (max-width: 768px) {
   .movie-container {
     flex-direction: column;
@@ -113,3 +127,4 @@
     align-self: center;
   }
 }
+*/
