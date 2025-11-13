@@ -1,23 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/reviewLibrary.css" />
     <title>ReviewLibrary</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- NAVBAR -->
     <nav>
-        <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="./html/reviewLibrary.html">Reviews</a></li>
-            <li><a href="./html/watchList.html">Up Next</a></li>
-        </ul>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="./reviewLibrary.html">Reviews</a></li>
+        <li><a href="./watchList.html">Up Next</a></li>
+      </ul>
     </nav>
     <h1><a href="/index.html">WatchLi</a></h1>
-</body>
+    <!-- review library site -->
+    <main class="review_library_container">
+      <!-- "sort by" container -->
+      <div class="sort_container">
+        <label for="sort">Sort by:</label>
+        <select id="sort">
+          <option value="rating">Rating</option>
+          <option value="title">Title</option>
+          <option value="release">Release Date</option>
+        </select>
+      </div>
+      <!-- movie layout -->
+      <div class="movie_grid">
+        <!-- movie 1 -->
+        <div class="movie_card">
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <img src="/images/us_poster.jpg" alt="Movie 1" />
+          <h3>Us</h3>
+        </div>
+        <!-- movie 2 -->
+        <div class="movie_card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <img src="/images/us_poster.jpg" alt="Movie 2" />
+          <h3>Us</h3>
+        </div>
+        <!-- movie 3 -->
+        <div class="movie_card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <img src="/images/us_poster.jpg" alt="Movie 3" />
+          <h3>Us</h3>
+        </div>
+        <!-- movie 4 -->
+        <div class="movie_card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <img src="/images/us_poster.jpg" alt="Movie 4" />
+          <h3>Us</h3>
+        </div>
+        <!-- movie 5 -->
+        <div class="movie_card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <img src="/images/us_poster.jpg" alt="Movie 5" />
+          <h3>Us</h3>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
