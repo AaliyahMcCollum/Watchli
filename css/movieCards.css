@@ -1,0 +1,19 @@
+.movieGrid {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+/* Replace w/ joaquin's css */
+.movieCard img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: all ease-in-out 0.5s;
+}
+
+.movie-card p {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+}

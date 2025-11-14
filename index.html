@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/mainPage.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mainPage.css">
+    <link rel="stylesheet" href="css/movieCards.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
@@ -16,8 +17,8 @@
     <nav>
         <ul>
             <li><a href="/index.html">Home</a></li>
-            <li><a href="./html/reviewLibrary.html">Reviews</a></li>
-            <li><a href="./html/watchList.html">Up Next</a></li>
+            <li><a href="html/reviewLibrary.html">Reviews</a></li>
+            <li><a href="html/watchList.html">Up Next</a></li>
         </ul>
     </nav>
     <h1><a href="/index.html">WatchLi</a></h1>
@@ -31,9 +32,11 @@
 
     <h2>New Movies</h2>
     <!-- Movie API Call -->
-    <div>Movie PlaceHolder</div>
+    <div id="new-movies" class="movieGrid"></div>
     <h2>Trending Movies</h2>
-    <div>Movie PlaceHolder</div>
+    <div id="trending-movies" class="movieGrid"></div>
     <!-- Movie API Call -->
+
+    <script src="js/getMovie.js"></script>
 </body>
 </html>
