@@ -6,7 +6,7 @@ const IMG_PATH = "https://image.tmdb.org/t/p/w500";
 async function fetchMovies(url) {
 const res = await fetch(url);
 const data = await res.json();
-return data.results.slice(0, 5);
+return data.results.slice(0, 7);
 }
 
 function displayMovies(list, elementId) {

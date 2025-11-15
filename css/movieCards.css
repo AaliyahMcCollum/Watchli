@@ -1,11 +1,11 @@
 .movieGrid {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 /* Replace w/ joaquin's css */
-.movieCard img {
+.movie-card img {
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
@@ -15,5 +15,18 @@
 .movie-card p {
     text-align: center;
     margin-top: 8px;
-    font-size: 14px;
+    font-family: "Limelight", sans-serif;
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+}
+
+.movie-card h2 {
+  font-family: "Limelight", sans-serif;
+  font-size: 1.2rem;
+  margin-top: 4px;
 }
