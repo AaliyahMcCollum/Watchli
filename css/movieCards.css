@@ -1,23 +1,58 @@
 .movieGrid {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
-/* Replace w/ joaquin's css */
+
 .movie-card img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: all ease-in-out 0.5s;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all ease-in-out 0.5s;
+  display: block;
+}
+
+.movie-card-inner {
+  position: relative;
+}
+/* Button Hover Overlay */
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 10px;
+}
+
+.overlay-btn {
+  padding: 10px 14px;
+  background: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.overlay-btn:hover {
+  background: #00BFFF;
 }
 
 .movie-card p {
-    text-align: center;
-    margin-top: 8px;
-    font-family: "Limelight", sans-serif;
-    font-size: 1.2rem;
-    margin-top: 4px;
+  text-align: center;
+  margin-top: 8px;
+  font-family: "Limelight", sans-serif;
+  font-size: 1.2rem;
+  margin-top: 4px;
 }
 
 .movie-card:hover {
@@ -25,8 +60,13 @@
   box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
 }
 
+.movie-card:hover .movie-overlay{
+  opacity: 1;
+}
+
 .movie-card h2 {
   font-family: "Limelight", sans-serif;
   font-size: 1.2rem;
   margin-top: 4px;
 }
+
