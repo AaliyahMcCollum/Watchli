@@ -20,9 +20,14 @@
         <li><a href="/index.html">Home</a></li>
         <li><a href="./reviewLibrary.html">Reviews</a></li>
         <li><a href="./watchList.html">Up Next</a></li>
+
+        <!-- Auth-related -->
+        <li id="nav-login"><a href="../html/login.html">Login</a></li>
+        <li id="nav-signup"><a href="../html/signup.html">Sign Up</a></li>
+        <li id="nav-logout" style="display: none"><a href="#">Logout</a></li>
       </ul>
     </nav>
-    <h1><a href="/index.html">WatchLi</a></h1>
+    <h1><a href="../index.html">WatchLi</a></h1>
     <!-- review library site -->
     <main class="review_library_container">
       <!-- "sort by" container -->
@@ -68,5 +73,25 @@
         </div>
       </div>
     </main>
+    <script type="module">
+      import { logout } from "../js/auth.js";
+
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        document.getElementById("nav-login").style.display = "none";
+        document.getElementById("nav-signup").style.display = "none";
+        document.getElementById("nav-logout").style.display = "block";
+
+        document.getElementById("nav-logout").addEventListener("click", (e) => {
+          e.preventDefault();
+          logout(); // redirects to index.html
+        });
+      } else {
+        document.getElementById("nav-login").style.display = "block";
+        document.getElementById("nav-signup").style.display = "block";
+        document.getElementById("nav-logout").style.display = "none";
+      }
+    </script>
   </body>
 </html>

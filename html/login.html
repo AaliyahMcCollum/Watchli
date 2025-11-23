@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .login-container {
+        background: #1e1e1e;
+        padding: 30px;
+        width: 300px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+      input,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+      }
+      input {
+        background: #303030;
+        color: white;
+      }
+      button {
+        background: #ff3e3e;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #ff5c5c;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h2>Log In</h2>
+
+      <form id="loginForm">
+        <input id="email" type="email" placeholder="Email" required />
+        <input id="password" type="password" placeholder="Password" required />
+        <button type="submit">Log In</button>
+      </form>
+
+      <p style="margin-top: 15px; font-size: 14px">
+        Don't have an account?
+        <a href="signup.html" style="color: #ff5c5c">Sign up</a>
+      </p>
+    </div>
+
+    <script type="module">
+      import { login } from "../js/auth.js";
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          const result = await login(email, password);
+
+          if (result.success) {
+            alert("Login successful!");
+            window.location.href = "../index.html"; // redirect to your homepage
+          } else {
+            alert("Login failed: " + result.message);
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,42 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mainPage.css">
-    <link rel="stylesheet" href="css/movieCards.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mainPage.css" />
+    <link rel="stylesheet" href="css/movieCards.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
+      rel="stylesheet"
+    />
     <title>Watchli</title>
-
-</head>
-<body>
+  </head>
+  <body>
     <!-- NAVBAR -->
     <nav>
-        <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="html/reviewLibrary.html">Reviews</a></li>
-            <li><a href="html/watchList.html">Up Next</a></li>
-        </ul>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="html/reviewLibrary.html">Reviews</a></li>
+        <li><a href="html/watchList.html">Up Next</a></li>
+
+        <!-- Visible only when not logged in -->
+        <li id="nav-login"><a href="html/login.html">Login</a></li>
+        <li id="nav-signup"><a href="html/signup.html">Sign Up</a></li>
+
+        <!-- Visible only when logged in -->
+        <li id="nav-logout" style="display: none"><a href="#">Logout</a></li>
+        </li>
+      </ul>
     </nav>
-    <h1><a href="/index.html" style="color: #00BFFF ;
-                                    text-decoration: none;
-                                    border-radius: 20px;
-                                    border-color: #00BFFF;
-                                    border-style: solid;
-                                    width: 50%;
-                                    display: block;
-                                    margin: 0 auto;
-                                    text-shadow: 0 0 10px #00BFFF;
-                                    box-shadow: 0px 4px 8px #00BFFF;">WatchLi</a></h1>
+    <h1>
+      <a
+        href="/index.html"
+        style="
+          color: #00bfff;
+          text-decoration: none;
+          border-radius: 20px;
+          border-color: #00bfff;
+          border-style: solid;
+          width: 50%;
+          display: block;
+          margin: 0 auto;
+          text-shadow: 0 0 10px #00bfff;
+          box-shadow: 0px 4px 8px #00bfff;
+        "
+        >WatchLi</a
+      >
+    </h1>
     <div class="searchContainer">
-        <form action="/search" method="get">
-            <input class="search" type="search" id="search-input" name="q" placeholder="Search for a movie...">
-            <!-- Replace "Search" with magnifying glass -->
-            <button class="searchButton"><img class="searchButton" src="images/searchButtonDark.png" width="25px" height="25px"></button> 
-        </form>
+      <form action="/search" method="get">
+        <input
+          class="search"
+          type="search"
+          id="search-input"
+          name="q"
+          placeholder="Search for a movie..."
+        />
+        <!-- Replace "Search" with magnifying glass -->
+        <button class="searchButton">
+          <img
+            class="searchButton"
+            src="images/searchButtonDark.png"
+            width="25px"
+            height="25px"
+          />
+        </button>
+      </form>
     </div>
 
     <h2>New Movies</h2>
@@ -47,6 +78,28 @@
     <!-- Movie API Call -->
 
     <script src="js/getMovie.js"></script>
-    
-</body>
+
+    <script type="module">
+      import { logout } from "./js/auth.js";
+
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        document.getElementById("nav-login").style.display = "none";
+        document.getElementById("nav-signup").style.display = "none";
+        document.getElementById("nav-logout").style.display = "block";
+
+        document.getElementById("nav-logout").addEventListener("click", (e) => {
+          e.preventDefault();
+          logout(); // redirects to index.html
+        });
+
+      } else {
+        document.getElementById("nav-login").style.display = "block";
+        document.getElementById("nav-signup").style.display = "block";
+        document.getElementById("nav-logout").style.display = "none";
+      }
+    </script>
+
+  </body>
 </html>
