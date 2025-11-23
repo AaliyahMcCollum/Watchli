@@ -1,28 +1,34 @@
 .movieGrid {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 /* Replace w/ joaquin's css */
 .movie-card img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: all ease-in-out 0.5s;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all ease-in-out 0.5s;
+  border: 1px solid #00bfff;
 }
 
 .movie-card p {
-    text-align: center;
-    margin-top: 8px;
-    font-family: "Limelight", sans-serif;
-    font-size: 1.2rem;
-    margin-top: 4px;
+  text-align: center;
+  margin-top: 8px;
+  font-family: "Limelight", sans-serif;
+  font-size: 1.2rem;
+  background: none;
 }
 
-.movie-card:hover {
+/*.movie-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+} */
+
+.movie-card img:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
 }
 
 .movie-card h2 {
