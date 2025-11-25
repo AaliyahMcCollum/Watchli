@@ -50,7 +50,7 @@
       >
     </h1>
     <div class="searchContainer">
-      <form action="/search" method="get">
+      <form id="search-form">
         <input
           class="search"
           type="search"
@@ -58,7 +58,6 @@
           name="q"
           placeholder="Search for a movie..."
         />
-        <!-- Replace "Search" with magnifying glass -->
         <button class="searchButton">
           <img
             class="searchButton"
@@ -69,6 +68,9 @@
         </button>
       </form>
     </div>
+    <div id="suggestion-box" class="suggestion-box"></div>
+    <h2 id="search-title" style="display:none;"> Search Results </h2>
+    <div id="search-results" class="movieGrid"></div>
 
     <h2>New Movies</h2>
     <!-- Movie API Call -->
@@ -76,7 +78,7 @@
     <h2>Trending Movies</h2>
     <div id="trending-movies" class="movieGrid"></div>
     <!-- Movie API Call -->
-
+    
     <script src="./js/getMovie.js"></script>
     <script src="./js/ratings.js"></script>
     <script src="./js/watchlist.js"></script>
