@@ -9,8 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/movieInfo.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="../css/movieInfo.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>WriteReview</title>
   </head>
   <body>
@@ -33,31 +33,28 @@
       <!-- left section of the site -->
       <div class="left_section">
         <img
-          src="/images/us_poster.jpg"
-          alt="US movie poster"
+          id="movie-poster"
+          src=""
+          alt="Movie Poster"
           class="movie_poster"
         />
-        <h2 class="movie_title">US</h2>
+        <h2 id="movie-title" class="movie_title"></h2>
       </div>
       <!-- right section of the site -->
       <div class="right_section">
         <div class="movieInfo_section">
-          <h2>About the Movie</h2>
-          <p class="movie_about">
-            In order to get away from their busy lives, the Wilson family takes
-            a vacation to Santa Cruz, California. At night, four strangers break
-            into Adelaide's childhood home. The family is shocked to find out
-            that the intruders look like them.
+          <h2>Summary</h2>
+          <p id="movie-description" class="movie_about">
           </p>
           <div class="movie_btns">
-            <button class="addWishList_btn">Add to WATCHLIST</button>
+            <button class="overlay-btn add-watchlist">Watchlist</button>
             <button class="writeReview_btn">Write Review</button>
           </div>
         </div>
       </div>
     </main>
     <script type="module">
-      import { logout } from "./js/auth.js";
+      import { logout } from "../js/auth.js";
 
       const token = localStorage.getItem("token");
 
@@ -75,6 +72,10 @@
         document.getElementById("nav-signup").style.display = "block";
         document.getElementById("nav-logout").style.display = "none";
       }
+
+      
     </script>
+    <!-- //Dynamic Movie Loading (Movie loaded based on title clicked) -->
+    <script type="module" src="../js/getMovie.js"></script>
   </body>
 </html>

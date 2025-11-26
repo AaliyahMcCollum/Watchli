@@ -186,7 +186,7 @@ function displayMovies(list, elementId) {
                   ? 'disabled style="background:#00bfff;cursor:default;"'
                   : ""
               }>
-              ${isSaved ? "✓ In Watchlist" : "Add to Watchlist"}
+              ${isSaved ? "✓ Watchlisted" : "Watchlist"}
             </button>
           </div>
           <p>${movie.title}</p>
@@ -223,7 +223,7 @@ initHomepage();
 // ---------------------------------------
 document.addEventListener("click", async (e) => {
   if (e.target.classList.contains("view-movie")) {
-    window.location.href = `/movie?id=${e.target.dataset.id}`;
+      window.location.href = "./html/movieInfo.html?id=" + e.target.dataset.id;
   }
 
   if (e.target.classList.contains("add-watchlist")) {
@@ -251,3 +251,35 @@ document.addEventListener("click", async (e) => {
     markMovieAsSaved(movieId);
   }
 });
+
+// Dynamic Movie Page (movieInfo.html)
+
+(async function loadMovieInfoPage() {
+  if(!window.location.pathname.includes("movieInfo.html")) return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const movieId = urlParams.get("id");
+  if (!movieId) return;
+
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
+
+    );
+    const movie = await res.json();
+
+    //UI Fill In 
+    const poster = document.getElementById("movie-poster");
+    const title = document.getElementById("movie-title");
+    const description = document.getElementById("movie-description");
+    
+    //validation
+    if (poster) poster.src = IMG_PATH + movie.poster_path;
+    if (title) title.textContent = movie.title;
+    if (description) description.textContent = movie.overview;
+
+  }
+  catch (err) {
+    console.error("Failed loading movie info: ", err);
+  }
+}) ();
