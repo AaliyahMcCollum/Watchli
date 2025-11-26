@@ -49,4 +49,12 @@ public class AuthService {
 
         return jwtUtil.generateToken(user.getEmail());
     }
+    public Long getUserIdFromEmail(String email) {
+        return userRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("User not found"))
+            .getId();
+    }
+
 }
+
+

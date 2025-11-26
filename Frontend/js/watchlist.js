@@ -1,81 +1,102 @@
-import { supabase } from "./supabaseClient.js";
+// js/watchlist.js
+console.log("watchlist.js loaded!");
 
-// Add movie to master watch list
+const API_WATCHLIST = "http://localhost:8080/api/watchlist";
+
+// --- Exported: add movie to watchlist ---
 export async function addToWatchList(movie) {
-    const {data, error} = await supabase
-        .from('watchlist')
-        .insert({
-            movie_id: movie.id,
-            title: movie.title,
-            poster: movie.poster_path
-        });
+  const token = localStorage.getItem("token");
 
-    if (error) {
-        console.error(error);
-        alert("Error adding to Watchlist");
+  if (!token) {
+    alert("Please log in to add movies.");
+    return false;
+  }
 
-    } else {
-        alert("Added to Watchlist!");
-    }
-}
+  const body = {
+    movieId: Number(movie.id),
+    title: movie.title,
+    poster: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+  };
 
-// Get masterwatchlist
-export async function getWatchlist() {
-    const { data, error } = await supabase
-        .from('watchlist')
-        .select('*')
-        .order('added_at', { ascending: false });
-
-    if (error) {
-        console.error(error);
-        return [];
-    }
-
-    return data;
-}
-
-// Load watchlist onto page
-export async function loadWatchlist() {
-    const container = document.getElementById("watchlist-container");
-    if (!container) return;
-
-    const movies = await getWatchlist();
-    container.innerHTML = "" ;
-
-    movies.forEach(movie => {
-        const card = document.createElement("div");
-        card.className = "movie-card";
-        card.innerHTML = `
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster}" alt="${movie.title}">
-        <p>${movie.title}</p>
-        <button class="remove-btn" data-id="${movie.id}">Remove</button>
-        `;
-        container.appendChild(card)
+  try {
+    const res = await fetch(`${API_WATCHLIST}/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
     });
+
+    if (!res.ok) {
+      const msg = await res.text();
+      alert("Error: " + msg);
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.error("Error adding to watchlist:", err);
+    alert("Network error adding to watchlist.");
+    return false;
+  }
 }
 
-// Delete from Watchlist
-export async function removeFromWatchlist(id) {
-    const { error } = await supabase
-    .from("watchlist")
-    .delete()
-    .eq("id", id);
-
-    if (error) {
-        console.error(error);
-        alert("Error removing movie");
-    } else {
-        loadWatchlist();
-    }
+// ---------------- WATCHLIST PAGE ONLY ----------------
+if (document.getElementById("watchlist-container")) {
+  loadWatchlist();
 }
 
-//Button Listener
-document.addEventListener("click", e => {
-    if (e.target.classList.contains("remove-btn")) {
-        const id = e.target.dataset.id;
-        removeFromWatchlist(id);
-    }
-});
+async function loadWatchlist() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("Please log in to view your watchlist.");
+    window.location.href = "../html/login.html";
+    return;
+  }
 
-//Auto load page
-window.addEventListener("DCOMContentLoaded", loadWatchlist);
+  const res = await fetch(API_WATCHLIST, {
+    headers: { Authorization: "Bearer " + token },
+  });
+
+  if (!res.ok) {
+    console.error("Failed to load watchlist:", res.status);
+    return;
+  }
+
+  const data = await res.json();
+  displayWatchlist(data);
+}
+
+function displayWatchlist(list) {
+  const container = document.getElementById("watchlist-container");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  list.forEach((item) => {
+    container.innerHTML += `
+      <div class="movie-card">
+        <img src="${item.poster}">
+        <p>${item.title}</p>
+        <button class="remove-btn" data-id="${item.id}">Remove</button>
+      </div>
+    `;
+  });
+
+  document.querySelectorAll(".remove-btn").forEach((btn) => {
+    btn.addEventListener("click", removeItem);
+  });
+}
+
+async function removeItem(e) {
+  const token = localStorage.getItem("token");
+  const id = e.target.dataset.id;
+
+  await fetch(`${API_WATCHLIST}/${id}`, {
+    method: "DELETE",
+    headers: { Authorization: "Bearer " + token },
+  });
+
+  loadWatchlist();
+}

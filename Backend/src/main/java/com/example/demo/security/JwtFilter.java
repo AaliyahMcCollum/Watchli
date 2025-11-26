@@ -50,6 +50,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         String subject = jwtUtil.getSubjectFromToken(token);
+        request.setAttribute("email", subject);
 
         UsernamePasswordAuthenticationToken auth =
                 new UsernamePasswordAuthenticationToken(

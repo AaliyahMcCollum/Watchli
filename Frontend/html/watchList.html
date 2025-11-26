@@ -27,10 +27,27 @@
         <li id="nav-logout" style="display: none"><a href="#">Logout</a></li>
       </ul>
     </nav>
-    <h1><a href="../index.html">WatchLi</a></h1>
+    <h1>
+      <a
+        href="../index.html"
+        style="
+          color: #00bfff;
+          text-decoration: none;
+          border-radius: 20px;
+          border-color: #00bfff;
+          border-style: solid;
+          width: 50%;
+          display: block;
+          margin: 0 auto;
+          text-shadow: 0 0 10px #00bfff;
+          box-shadow: 0px 4px 8px #00bfff;
+        "
+        >WatchLi</a
+      >
+    </h1>
     <h2>Watchlist</h2>
     <div id="watchlist-container" class="movie-grid"></div>
-    <script type="module" src="/js/watchlist.js"></script>
+    <script type="module" src="../js/watchlist.js"></script>
     <script type="module">
       import { logout } from "../js/auth.js";
 
