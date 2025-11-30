@@ -4,6 +4,9 @@ import { addToWatchList } from "./watchlist.js";
 const API_KEY = "1392ead50e45927a38f55de4658b4dcb";
 const IMG_PATH = "https://image.tmdb.org/t/p/w500";
 const suggestionBox = document.getElementById("suggestion-box");
+if (!suggestionBox) {
+  console.warn("Suggestion box not found on this page.");
+}
 
 let userWatchlistIds = new Set();
 
@@ -53,60 +56,66 @@ async function loadUserWatchlist() {
 // ---------------------------------------
 // SEARCH SUBMIT
 // ---------------------------------------
-document.getElementById("search-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const query = document.getElementById("search-input").value.trim();
-  if (!query) return;
+const searchForm = document.getElementById("search-form");
+if (searchForm) {
+  searchForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const query = document.getElementById("search-input").value.trim();
+    if (!query) return;
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      query
-    )}`
-  );
-  const data = await res.json();
+    const res = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+        query
+      )}`
+    );
+    const data = await res.json();
 
-  displaySearchResults(data.results.slice(0, 7));
-  suggestionBox.innerHTML = "";
-  suggestionBox.style.display = "none";
-});
+    displaySearchResults(data.results.slice(0, 7));
+    suggestionBox.innerHTML = "";
+    suggestionBox.style.display = "none";
+  });
+}
 
 // ---------------------------------------
 // LIVE SEARCH
 // ---------------------------------------
-document.getElementById("search-input").addEventListener("input", async (e) => {
-  const query = e.target.value.trim();
-  if (!query) {
-    suggestionBox.innerHTML = "";
-    suggestionBox.style.display = "none";
-    return;
-  }
-
-  const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      query
-    )}`
-  );
-  const data = await res.json();
-  const results = data.results.slice(0, 7);
-
-  suggestionBox.innerHTML = "";
-  suggestionBox.style.display = "block";
-
-  results.forEach((movie) => {
-    const item = document.createElement("div");
-    item.className = "suggestion-item";
-    item.textContent = movie.title;
-
-    item.addEventListener("click", () => {
-      document.getElementById("search-input").value = movie.title;
+const searchInput = document.getElementById("search-input");
+if (searchInput) {
+  searchInput.addEventListener("input", async (e) => {
+    const query = e.target.value.trim();
+    if (!query) {
       suggestionBox.innerHTML = "";
       suggestionBox.style.display = "none";
-      displaySearchResults(results);
-    });
+      return;
+    }
 
-    suggestionBox.appendChild(item);
+    const res = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+        query
+      )}`
+    );
+    const data = await res.json();
+    const results = data.results.slice(0, 7);
+
+    suggestionBox.innerHTML = "";
+    suggestionBox.style.display = "block";
+
+    results.forEach((movie) => {
+      const item = document.createElement("div");
+      item.className = "suggestion-item";
+      item.textContent = movie.title;
+
+      item.addEventListener("click", () => {
+        document.getElementById("search-input").value = movie.title;
+        suggestionBox.innerHTML = "";
+        suggestionBox.style.display = "none";
+        displaySearchResults(results);
+      });
+
+      suggestionBox.appendChild(item);
+    });
   });
-});
+}
 
 // ---------------------------------------
 // DISPLAY SEARCH RESULTS
@@ -255,7 +264,7 @@ document.addEventListener("click", async (e) => {
 // Dynamic Movie Page (movieInfo.html)
 
 (async function loadMovieInfoPage() {
-  if(!window.location.pathname.includes("movieInfo.html")) return;
+  if (!window.location.pathname.toLowerCase().endsWith("movieinfo.html")) return;
 
   const urlParams = new URLSearchParams(window.location.search);
   const movieId = urlParams.get("id");
