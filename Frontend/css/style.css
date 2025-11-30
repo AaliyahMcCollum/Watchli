@@ -24,7 +24,7 @@ h1 {
 nav {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px) saturate(180%);
-  top: 0;
+  top: 10px;
   width: 100%;
   position: fixed;
   z-index: 9999;
