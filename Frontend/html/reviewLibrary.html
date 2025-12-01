@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/reviewLibrary.css" />
-    <title>ReviewLibrary</title>
+    <title>Review Library</title>
   </head>
   <body>
     <!-- NAVBAR -->
@@ -22,13 +22,16 @@
         <li><a href="./watchList.html">Up Next</a></li>
 
         <!-- Auth-related -->
-        <li id="nav-login"><a href="../html/login.html">Login</a></li>
-        <li id="nav-signup"><a href="../html/signup.html">Sign Up</a></li>
+        <li id="nav-login"><a href="./login.html">Login</a></li>
+        <li id="nav-signup"><a href="./signup.html">Sign Up</a></li>
         <li id="nav-logout" style="display: none"><a href="#">Logout</a></li>
       </ul>
     </nav>
-    <h1><a href="../index.html"
-      style="
+
+    <h1>
+      <a
+        href="../index.html"
+        style="
           color: #00bfff;
           text-decoration: none;
           border-radius: 20px;
@@ -38,8 +41,14 @@
           display: block;
           margin: 0 auto;
           text-shadow: 0 0 10px #00bfff;
-          box-shadow: 0px 4px 8px #00bfff;">WatchLi</a></h1>
-    <!-- review library site -->
+          box-shadow: 0px 4px 8px #00bfff;
+        "
+      >
+        WatchLi
+      </a>
+    </h1>
+
+    <!-- REVIEW LIBRARY -->
     <main class="review_library_container">
       <!-- "sort by" container -->
       <div class="sort_container">
@@ -47,43 +56,18 @@
         <select id="sort">
           <option value="rating">Rating</option>
           <option value="title">Title</option>
-          <option value="release">Release Date</option>
+          <option value="recent">Recently Updated</option>
         </select>
       </div>
-      <!-- movie layout -->
-      <div class="movie_grid">
-        <!-- movie 1 -->
-        <div class="movie_card">
-          <div class="stars">⭐⭐⭐⭐☆</div>
-          <img src="../images/us_poster.jpg" alt="Movie 1" />
-          <h3>Us</h3>
-        </div>
-        <!-- movie 2 -->
-        <div class="movie_card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <img src="../images/us_poster.jpg" alt="Movie 2" />
-          <h3>Us</h3>
-        </div>
-        <!-- movie 3 -->
-        <div class="movie_card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <img src="../images/us_poster.jpg" alt="Movie 3" />
-          <h3>Us</h3>
-        </div>
-        <!-- movie 4 -->
-        <div class="movie_card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <img src="../images/us_poster.jpg" alt="Movie 4" />
-          <h3>Us</h3>
-        </div>
-        <!-- movie 5 -->
-        <div class="movie_card">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <img src="../images/us_poster.jpg" alt="Movie 5" />
-          <h3>Us</h3>
-        </div>
-      </div>
+
+      <!-- dynamic movie layout -->
+      <div id="reviewGrid" class="movie_grid"></div>
     </main>
+
+    <!-- MAIN JS -->
+    <script type="module" src="../js/reviewLibrary.js"></script>
+
+    <!-- AUTH NAVBAR JS -->
     <script type="module">
       import { logout } from "../js/auth.js";
 
@@ -96,7 +80,7 @@
 
         document.getElementById("nav-logout").addEventListener("click", (e) => {
           e.preventDefault();
-          logout(); // redirects to index.html
+          logout();
         });
       } else {
         document.getElementById("nav-login").style.display = "block";

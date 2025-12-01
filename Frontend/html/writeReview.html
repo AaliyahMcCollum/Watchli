@@ -3,32 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/writeReview.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <title>WriteReview</title>
+
+    <!-- FIXED PATHS -->
+    <link rel="stylesheet" href="/Frontend/css/style.css" />
+    <link rel="stylesheet" href="/Frontend/css/writeReview.css" />
+
+    <title>Write Review</title>
   </head>
   <body>
     <!-- NAVBAR -->
     <nav>
       <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="./html/reviewLibrary.html">Reviews</a></li>
-        <li><a href="./html/watchList.html">Up Next</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../html/reviewLibrary.html">Reviews</a></li>
+        <li><a href="../html/watchList.html">Up Next</a></li>
 
-        <!-- Auth-related -->
-        <li id="nav-login"><a href="../html/login.html">Login</a></li>
-        <li id="nav-signup"><a href="../html/signup.html">Sign Up</a></li>
+        <li id="nav-login"><a href="/html/login.html">Login</a></li>
+        <li id="nav-signup"><a href="/html/signup.html">Sign Up</a></li>
         <li id="nav-logout" style="display: none"><a href="#">Logout</a></li>
       </ul>
     </nav>
-    <h1><a href="/index.html"
-      style="
+
+    <h1>
+      <a
+        href="/index.html"
+        style="
           color: #00bfff;
           text-decoration: none;
           border-radius: 20px;
@@ -38,57 +44,42 @@
           display: block;
           margin: 0 auto;
           text-shadow: 0 0 10px #00bfff;
-          box-shadow: 0px 4px 8px #00bfff;">WatchLi</a></h1>
-    <!-- write review site -->
+          box-shadow: 0px 4px 8px #00bfff;
+        "
+        >WatchLi</a
+      >
+    </h1>
+
+    <!-- LAYOUT -->
     <main class="review_container">
-      <!-- left section of the site -->
       <div class="left_section">
-        <img
-          src="/images/us_poster.jpg"
-          alt="US movie poster"
-          class="movie_poster"
-        />
-        <h2 class="movie_title">US</h2>
+        <img id="moviePoster" class="movie_poster" src="" alt="Movie Poster" />
+        <h2 id="movieTitle" class="movie_title"></h2>
       </div>
-      <!-- right section of the site -->
+
       <div class="right_section">
         <div class="review_section">
-          <div class="stars">★★★★★</div>
+          <div id="starSelector" class="stars"></div>
+
           <input
-            type="text"
+            id="reviewTitle"
             class="review_title"
-            placeholder="Enter your review title..."
+            placeholder="Review title..."
+            type="text"
           />
           <textarea
+            id="reviewText"
             class="review_text"
+            placeholder="Write your review..."
             rows="17"
-            placeholder="Write your review here..."
           ></textarea>
-          <button class="submit_btn">Submit Review</button>
+
+          <button id="submitReview" class="submit_btn">Submit Review</button>
         </div>
       </div>
     </main>
-    <!-- AUTH SCRIPT  -->
-    <script type="module">
-      import { logout } from "../js/auth.js";
 
-      // Add logout click
-      document.getElementById("nav-logout").addEventListener("click", () => {
-        logout();
-      });
-
-      // Navbar logic
-      const token = localStorage.getItem("token");
-
-      if (token) {
-        document.getElementById("nav-login").style.display = "none";
-        document.getElementById("nav-signup").style.display = "none";
-        document.getElementById("nav-logout").style.display = "block";
-      } else {
-        document.getElementById("nav-login").style.display = "block";
-        document.getElementById("nav-signup").style.display = "block";
-        document.getElementById("nav-logout").style.display = "none";
-      }
-    </script>
+    <!-- FIXED JS PATH -->
+    <script type="module" src="/Frontend/js/writeReview.js"></script>
   </body>
 </html>

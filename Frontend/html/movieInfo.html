@@ -27,8 +27,10 @@
         <li id="nav-logout" style="display: none"><a href="#">Logout</a></li>
       </ul>
     </nav>
-    <h1><a href="../index.html"
-      style="
+    <h1>
+      <a
+        href="../index.html"
+        style="
           color: #00bfff;
           text-decoration: none;
           border-radius: 20px;
@@ -38,27 +40,27 @@
           display: block;
           margin: 0 auto;
           text-shadow: 0 0 10px #00bfff;
-          box-shadow: 0px 4px 8px #00bfff;">WatchLi</a></h1>
+          box-shadow: 0px 4px 8px #00bfff;
+        "
+        >WatchLi</a
+      >
+    </h1>
     <!-- write review site -->
     <main class="review_container">
       <!-- left section of the site -->
       <div class="left_section">
-        <img
-          id="movie-poster"
-          src=""
-          alt="Movie Poster"
-          class="movie_poster"
-        />
+        <img id="movie-poster" src="" alt="Movie Poster" class="movie_poster" />
         <h2 id="movie-title" class="movie_title"></h2>
       </div>
       <!-- right section of the site -->
       <div class="right_section">
         <div class="movieInfo_section">
-          <h2 style="text-align: center;">Summary</h2>
-          <p id="movie-description" class="movie_about">
-          </p>
+          <h2 style="text-align: center">Summary</h2>
+          <p id="movie-description" class="movie_about"></p>
           <div class="movie_btns">
-            <button class="overlay-btn add-watchlist addWishList_btn">Watchlist</button>
+            <button class="overlay-btn add-watchlist addWishList_btn">
+              Watchlist
+            </button>
             <button class="writeReview_btn">Write Review</button>
           </div>
         </div>
@@ -83,8 +85,28 @@
         document.getElementById("nav-signup").style.display = "block";
         document.getElementById("nav-logout").style.display = "none";
       }
+      // --- Handle "Write Review" button ---
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("writeReview_btn")) {
+          // Must be logged in
+          if (!localStorage.getItem("token")) {
+            window.location.href = "../html/login.html";
+            return;
+          }
 
-      
+          // Read movie ID from: movieInfo.html?id=XXXX
+          const params = new URLSearchParams(window.location.search);
+          const movieId = params.get("id");
+
+          if (!movieId) {
+            alert("Movie ID missing in URL.");
+            return;
+          }
+
+          // Redirect to writeReview.html with movieId passed correctly
+          window.location.href = `../html/writeReview.html?movieId=${movieId}`;
+        }
+      });
     </script>
     <!-- //Dynamic Movie Loading (Movie loaded based on title clicked) -->
     <script type="module" src="../js/getMovie.js"></script>
