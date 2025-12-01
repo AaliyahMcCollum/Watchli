@@ -1,7 +1,7 @@
-// js/watchlist.js
 console.log("watchlist.js loaded!");
 
 const API_WATCHLIST = "http://localhost:8080/api/watchlist";
+const POSTER_URL = "https://image.tmdb.org/t/p/w500";
 
 // --- Exported: add movie to watchlist ---
 export async function addToWatchList(movie) {
@@ -15,7 +15,7 @@ export async function addToWatchList(movie) {
   const body = {
     movieId: Number(movie.id),
     title: movie.title,
-    poster: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+    poster: POSTER_URL + movie.poster_path,
   };
 
   try {
@@ -74,22 +74,48 @@ function displayWatchlist(list) {
 
   container.innerHTML = "";
 
+  if (list.length === 0) {
+    container.innerHTML = `<p style="color:#ccc; text-align:center;">Your watchlist is empty.</p>`;
+    return;
+  }
+
   list.forEach((item) => {
     container.innerHTML += `
       <div class="movie-card">
-        <img src="${item.poster}">
+
+        <div class="movie-card-inner" data-id="${item.id}" data-movie="${item.movieId}">
+          
+          <img src="${item.poster}" alt="${item.title}">
+
+          <div class="movie-overlay">
+            <button class="overlay-btn view-btn" data-movie="${item.movieId}">
+              View
+            </button>
+
+            <button class="overlay-btn remove-btn" data-id="${item.id}">
+              Remove
+            </button>
+          </div>
+        </div>
+
         <p>${item.title}</p>
-        <button class="remove-btn" data-id="${item.id}">Remove</button>
       </div>
     `;
   });
 
-  document.querySelectorAll(".remove-btn").forEach((btn) => {
-    btn.addEventListener("click", removeItem);
-  });
+  // Add button listeners
+  document
+    .querySelectorAll(".remove-btn")
+    .forEach((btn) => btn.addEventListener("click", removeItem));
+
+  document
+    .querySelectorAll(".view-btn")
+    .forEach((btn) => btn.addEventListener("click", goToMovie));
 }
 
+// ----- REMOVE -----
 async function removeItem(e) {
+  e.stopPropagation();
   const token = localStorage.getItem("token");
   const id = e.target.dataset.id;
 
@@ -99,4 +125,11 @@ async function removeItem(e) {
   });
 
   loadWatchlist();
+}
+
+// ----- VIEW MOVIE -----
+function goToMovie(e) {
+  e.stopPropagation();
+  const movieId = e.target.dataset.movie;
+  window.location.href = `./movieInfo.html?id=${movieId}`;
 }

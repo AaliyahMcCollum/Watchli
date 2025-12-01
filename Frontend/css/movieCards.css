@@ -14,6 +14,11 @@
   display: block;
 }
 
+.movie-card:hover img {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+}
+
 .movie-card p {
   text-align: center;
   margin-top: 8px;
@@ -27,19 +32,15 @@
   box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
 } */
 
-.movie-card img:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
-}
-
 .movie-card h2 {
   font-family: "Limelight", sans-serif;
   font-size: 1.2rem;
   margin-top: 4px;
 }
 
-.movie-card:hover .movie-overlay{
+.movie-card:hover .movie-overlay {
   opacity: 1;
+  transform: translateY(-8px);
 }
 
 /* Button Hover Overlay */
@@ -49,7 +50,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +71,7 @@
 }
 
 .overlay-btn:hover {
-  background: #00BFFF;
+  background: #00bfff;
 }
 
 .movie-card-inner {
