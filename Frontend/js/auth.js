@@ -46,5 +46,10 @@ export async function login(email, password) {
 
 export function logout() {
   localStorage.removeItem("token");
-  window.location.href = "./index.html";
+
+  if (window.location.pathname.includes("/html/")) {
+    window.location.href = "../index.html";
+  } else {
+    window.location.href = "./index.html";
+  }
 }
