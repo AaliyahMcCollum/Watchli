@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8080/api/auth";
+const API_BASE = "https://watchli-api.onrender.com";
+const API_URL = "${API_BASE}/api/auth";
 
 async function parseResponse(response) {
   // Try JSON version (using clone so body isn't consumed)

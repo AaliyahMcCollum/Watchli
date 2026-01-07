@@ -3,6 +3,7 @@ import { addToWatchList } from "./watchlist.js";
 
 const API_KEY = "1392ead50e45927a38f55de4658b4dcb";
 const IMG_PATH = "https://image.tmdb.org/t/p/w500";
+const API_BASE = "https://watchli-api.onrender.com";
 
 // suggestion box (only exists on homepage)
 const suggestionBox = document.getElementById("suggestion-box");
@@ -31,7 +32,7 @@ async function isMovieInWatchlist(movieId) {
   if (!token) return false;
 
   try {
-    const res = await fetch("http://localhost:8080/api/watchlist", {
+    const res = await fetch("${API_BASE}/api/watchlist", {
       headers: { Authorization: "Bearer " + token },
     });
 
@@ -53,7 +54,7 @@ async function loadUserWatchlist() {
   if (!token) return;
 
   try {
-    const res = await fetch("http://localhost:8080/api/watchlist", {
+    const res = await fetch("${API_BASE}/api/watchlist", {
       headers: { Authorization: "Bearer " + token },
     });
 

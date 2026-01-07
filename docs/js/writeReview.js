@@ -3,10 +3,12 @@ console.log("writeReview.js loaded!");
 // -----------------------------
 // CONSTANTS
 // -----------------------------
-const API_URL = "http://localhost:8080/api/ratings/save";
+const API_BASE = "https://watchli-api.onrender.com";
+const API_URL = "${API_BASE}/api/ratings/save";
 const TMDB_BASE = "https://api.themoviedb.org/3/movie/";
 const POSTER_URL = "https://image.tmdb.org/t/p/w500";
 const TMDB_KEY = "1392ead50e45927a38f55de4658b4dcb";
+
 
 // -----------------------------
 // AUTH + VALIDATION
@@ -92,7 +94,7 @@ async function loadExistingReview() {
   console.log("Checking if user has an existing review...");
 
   try {
-    const res = await fetch(`http://localhost:8080/api/ratings/${movieId}`, {
+    const res = await fetch(`${API_BASE}/api/ratings/${movieId}`, {
       headers: { Authorization: "Bearer " + token },
     });
 

@@ -1,6 +1,6 @@
 console.log("watchlist.js loaded!");
-
-const API_WATCHLIST = "http://localhost:8080/api/watchlist";
+const API_BASE = "https://watchli-api.onrender.com";
+const API_WATCHLIST = "${API_BASE}/api/watchlist";
 const POSTER_URL = "https://image.tmdb.org/t/p/w500";
 
 // --- Exported: add movie to watchlist ---

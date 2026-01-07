@@ -1,6 +1,6 @@
 console.log("reviewLibrary.js loaded!");
-
-const API_URL = "http://localhost:8080/api/ratings";
+const API_BASE = "https://watchli-api.onrender.com";
+const API_URL = "${API_BASE}/api/ratings";
 const POSTER_URL = "https://image.tmdb.org/t/p/w500";
 
 const token = localStorage.getItem("token");
